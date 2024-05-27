@@ -1,0 +1,6 @@
+PORT=3000
+HOST=localhost
+PROTOCOL=http
+encryptionKey=
+jwtKey=
+authHost=https://smkalhikmah1.or.id/

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <%- include('../head'); %>
+  <link href="/css/datatables.min.css" rel="stylesheet">
+  <%- include('../style'); %>
+  <link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="/css/pages/panel.css" />
+</head>
+
+<body>
+  <%- include('../preloader'); %>
+  <div class="parent-wrapper">
+    <div class="panel-nav-wrapper">
+      <div class="panel-nav-container">
+        <%- include('./nav'); %>
+      </div>
+    </div>
+    <div class="panel-content-wrapper">
+      <%- body %>
+    </div>
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large panel-nav-toggler green">
+        <i class="large material-icons">menu</i>
+      </a>
+    </div>
+  </div>
+  <!--JavaScript at end of body for optimized loading-->
+  <%- include('../script'); %>
+  <script type="text/javascript" src="/js/materialize.min.js"></script>
+  <script src="/js/datatables.min.js"></script>
+  <script src="/js/socket.io.min.js"></script>
+  <script>
+    const dt = new DataTable('.init-datatables', {
+      responsive: true
+    });
+    const menuContainer = $('.menu-container');
+    const page = '<%= page %>';
+    const baseUrl = '<%= getBaseUrl() %>';
+    const socket = new WebSocket("/");
+  </script>
+  <script src="/js/pages/panel/main.js"></script>
+</body>
+
+</html>

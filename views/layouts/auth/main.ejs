@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <%- include('../head'); %>
+    <%- include('../style'); %>
+    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"
+    media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="/css/pages/auth.css" />
+</head>
+
+<body>
+    <%- include('../preloader'); %>
+    <div class="parent-wrapper">
+        <%- body %>
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <%- include('../script'); %>
+    <script>
+    const baseUrl = '<%= getBaseUrl() %>';
+    </script>
+    <script src="/js/pages/auth/main.js"></script>
+</body>
+
+</html>
