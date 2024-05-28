@@ -77,6 +77,7 @@ app.use(function (req, res, next) {
 app.locals.authUrl = authHost + "auth/service?auth_type=jwt&redirect_url=";
 app.locals.page = "dashboard";
 
+app.use(require("./routes/socket.js"));
 app.use(require("./routes/web.js"));
 
 expressListRoutes(app);

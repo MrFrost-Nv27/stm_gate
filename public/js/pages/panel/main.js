@@ -22,5 +22,4 @@ $("body").on("click", ".btn-logout", function (e) {
 
 $(document).ready(function () {
   $(`.nav-item-link[data-page=${page}]`).addClass("active");
-  $(".preloader").slideUp();
 });

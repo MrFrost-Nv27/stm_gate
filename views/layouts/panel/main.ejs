@@ -22,7 +22,7 @@
       <%- body %>
     </div>
     <div class="fixed-action-btn">
-      <a class="btn-floating btn-large panel-nav-toggler green">
+      <a class="btn-floating btn-large panel-nav-toggler blue">
         <i class="large material-icons">menu</i>
       </a>
     </div>
@@ -39,9 +39,9 @@
     const menuContainer = $('.menu-container');
     const page = '<%= page %>';
     const baseUrl = '<%= getBaseUrl() %>';
-    const socket = new WebSocket("/");
   </script>
   <script src="/js/pages/panel/main.js"></script>
+  <script src="/js/pages/panel/<%= page %>.js"></script>
 </body>
 
 </html>
