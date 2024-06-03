@@ -258,118 +258,6 @@ table .nominal::before {
   color: inherit;
 }
 
-.popup-wrapper {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  transition: all ease-in-out 0.3s;
-}
-
-.popup-wrapper.open {
-  z-index: 20;
-}
-
-.popup-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
-  opacity: 0;
-  transition: opacity ease-in-out 0.3s;
-}
-.popup-wrapper.open .popup-overlay {
-  opacity: 1;
-  z-index: 21;
-}
-
-.popup-box {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  top: 0;
-  width: 90%;
-  max-width: 50rem;
-  min-height: 17rem;
-  max-height: 90vh;
-  background-color: white;
-  border-radius: 1rem;
-  z-index: 22;
-  padding: 1rem;
-}
-
-.popup-close {
-  display: none;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  height: 2rem;
-  top: -0.5rem;
-  right: -0.5rem;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 4px;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all ease-in-out 0.15s;
-}
-.popup-wrapper.close-button .popup-close {
-  display: flex;
-}
-.popup-close:hover {
-  transform: scale(1.1);
-}
-.popup-close:active {
-  transform: scale(0.975);
-}
-
-.popup-title {
-  position: relative;
-}
-.popup-title::after {
-  content: "";
-  position: absolute;
-  height: 0.3rem;
-  width: 3rem;
-  background-color: grey;
-  border-radius: 50px;
-  left: 0;
-  bottom: -0.5rem;
-}
-
-.popup-content {
-  position: relative;
-  flex-grow: 2;
-  width: 100%;
-  margin-top: 1rem;
-  overflow-y: auto;
-}
-
-.popup-button {
-  display: none;
-  position: relative;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 1rem 2rem;
-  max-width: 20rem;
-  margin: 0 auto;
-}
-.popup-wrapper.addon-button .popup-button {
-  display: block;
-}
-/* .popup-wrapper.addon-button .popup-content {
-  max-height: 70vh;
-} */
-
 .auth-card {
   overflow: hidden;
 }
@@ -451,18 +339,74 @@ img.pasfoto:active {
   border-radius: 1rem;
 }
 
+.control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+}
+.control .progress {
+  width: 4rem;
+  margin: 0;
+}
+.control .btn-control {
+  position: relative;
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: small;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  transition: all ease 0.3s;
+}
+.control .btn-control i {
+  font-size: 1rem;
+}
+
+.control .btn-control:hover {
+  filter: brightness(0.9);
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+}
+.control .btn-control:active {
+  transform: scale(0.95);
+}
+
+.control .btn-control span {
+  display: none;
+}
+.control .btn-control.with-text {
+  height: auto;
+  width: auto;
+  padding: 0.25rem 0.5rem;
+}
+.control .btn-control.with-text span {
+  white-space: nowrap;
+  display: block;
+}
+
+.btn-control.btn-control-small {
+  font-size: 0.75rem;
+  gap: 0.25rem;
+}
+.btn-control.btn-control-small:not(.with-text) {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.btn-control.btn-control-small i {
+  font-size: 0.75rem;
+}
+.control .btn-control.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: #d0d0d0 !important;
+  box-shadow: none;
+}
+
 @media only screen and (min-width: 768px) {
-  .popup-title {
-    text-align: center;
-  }
-  .popup-title::after {
-    left: 50%;
-    bottom: -0.5rem;
-    transform: translateX(-50%);
-  }
-  .popup-box {
-    padding: 2rem 3rem 1rem;
-  }
   .table-control {
     justify-content: center;
   }

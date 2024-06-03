@@ -16,6 +16,7 @@
     "bcryptjs": "^2.4.3",
     "better-sqlite3": "^10.0.0",
     "better-sqlite3-session-store": "^0.1.0",
+    "body-parser": "^1.20.2",
     "change-case": "^5.4.4",
     "change-case-all": "^2.1.0",
     "cookie-parser": "^1.4.6",
@@ -36,9 +37,12 @@
     "passport": "^0.7.0",
     "passport-custom": "^1.1.1",
     "passport-local": "^1.0.0",
+    "pusher": "^5.2.0",
     "sequelize": "^6.37.3",
     "socket.io": "^4.7.5",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "uuid": "^9.0.1",
+    "venom-bot": "^5.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.1"

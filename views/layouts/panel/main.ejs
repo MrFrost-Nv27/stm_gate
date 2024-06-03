@@ -26,12 +26,39 @@
         <i class="large material-icons">menu</i>
       </a>
     </div>
+    <div class="popup-wrapper">
+      <div class="popup-overlay"></div>
+      <div class="popup">
+        <div class="popup-header">
+          <div class="popup-title"></div>
+          <div class="popup-close">
+            <i class="material-icons">close</i>
+          </div>
+        </div>
+        <div class="popup-body">
+        </div>
+      </div>
+    </div>
+    <div class="popup-wrapper float">
+      <div class="popup-overlay"></div>
+      <div class="popup">
+        <div class="popup-header">
+          <div class="popup-title"></div>
+          <div class="popup-close">
+            <i class="material-icons">close</i>
+          </div>
+        </div>
+        <div class="popup-body">
+        </div>
+      </div>
+    </div>
   </div>
   <!--JavaScript at end of body for optimized loading-->
   <%- include('../script'); %>
   <script type="text/javascript" src="/js/materialize.min.js"></script>
   <script src="/js/datatables.min.js"></script>
   <script src="/js/socket.io.min.js"></script>
+  <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
   <script>
     const dt = new DataTable('.init-datatables', {
       responsive: true

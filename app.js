@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const bodyParser = require('body-parser');
 const passport = require("passport");
 const sqlite = require("better-sqlite3");
 const session = require("express-session");
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(expressEjsLayouts);
 app.use(morgan("dev"));
 app.use(express.json()); // for parsing application/json
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.set("view engine", "ejs");
 app.set("layout", "layouts/panel/main");
@@ -79,6 +81,7 @@ app.locals.page = "dashboard";
 
 app.use(require("./routes/socket.js"));
 app.use(require("./routes/web.js"));
+app.use(require("./routes/api.js"));
 
 expressListRoutes(app);
 
@@ -89,6 +92,11 @@ db.sync({ force: false }).then(() => {
   server = app.listen(port, host, () => {
     console.log(`Server is running at: http://${host}:${port}`);
   });
+
+  app.locals.venom = {
+    magic: 0
+  };
+  global.venom = app.locals.venom;
 
   global.getBaseUrl = () => {
     if (port == 80) {

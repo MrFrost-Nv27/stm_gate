@@ -238,29 +238,71 @@ $.ajaxSetup({
     console.log(messages);
     Toast.fire({
       icon: "error",
-      title: messages
+      title: messages,
     });
   },
 });
 
-// function tableMenuDrawer(id, menu = []) {
-//   let menuEl = `<ul id='menu-${id}' class='dropdown-content'>`;
-//   $.each(menu, function (i, v) {
-//     if (typeof v == 'string') {
-//       menuEl += v == "line" ? `<li class="divider" tabindex="-1"></li>` : `<li><a href="#!" class="btn-action" data-action="${v}">${v}</li>`;
-//     }
-//     if (typeof v == 'object') {
-//       const list = {
-//         action: v.action ?? "action-menu",
-//         label: v.label ?? "Label Menu",
-//         class: v.class ?? "",
-//         data: v.data ?? {},
-//       };
-//       let dataAttr = '';
-//       $.each(list.data, (a,b) => dataAttr += ` data-${a}="${b}"`);
-//       menuEl += `<li><a href="#!" class="btn-action ${list.class}" data-action="${list.action}"${dataAttr}>${list.label}</li>`;
-//     }
-//   });
-//   menuEl += `</ul>`;
-//   return menuEl;
-// }
+class Popup {
+  constructor(el, options) {
+    this.settings = $.extend({}, { content: {} }, options);
+    this.el = el;
+    $.each(options.content, function (idx, e) {
+      const newEl = $(e);
+      let container = "";
+      if (newEl.hasClass("popup-content")) {
+        container = newEl;
+        container.attr("data-popup", idx);
+      } else {
+        container = $(`<div class="popup-content" data-popup="${idx}"></div>`);
+        container.append(newEl);
+      }
+      $(el).find(".popup-body").append(container);
+    });
+
+    $(el).on("click", ".popup-overlay", (e) => {
+      this.close();
+    });
+    $(el).on("click", ".popup-close", (e) => {
+      this.close();
+    });
+  }
+
+  open(content = null) {
+    $(this.el).addClass("open");
+    if (content) {
+      if (typeof content == "string") {
+        $(this.el)
+          .find(".popup-content[data-popup=" + content + "]")
+          .addClass("open");
+      }
+    }
+  }
+
+  close(content = null) {
+    if (content) {
+      if (typeof content == "string") {
+        $(this.el)
+          .find(".popup-content[data-popup=" + content + "]")
+          .removeClass("open");
+      }
+      if (Array.isArray(content)) {
+        content.forEach((s) =>
+          $(this.el)
+            .find(".popup-content[data-popup=" + s + "]")
+            .removeClass("open")
+        );
+      }
+    } else {
+      $(this.el).removeClass("open");
+      $(this.el).find(".popup-content").removeClass("open");
+    }
+  }
+}
+
+(function ($) {
+  $.fn.popup = function (options) {
+    const settings = $.extend({}, { content: {} }, options);
+    return new Popup(this, settings);
+  };
+})(jQuery);
